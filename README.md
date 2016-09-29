@@ -1,15 +1,21 @@
 # WSO2 API Manager Feature Demo #
 
 **Environment Setup**
-	
-  1. Add a host entry to the host machine
+  1. To run the examples of this workshop, it is neccessary to have the following tools installed on your laptop.
+     - Docker or Docker-machine
+       - LINUX users need to install [Docker](https://www.docker.com/)
+       - Windows and OSx user need to install [Docker-machine](https://docs.docker.com/machine/install-machine/).
+  2. This README assumes that the followers may use Windows or OSx. Therefore,
+     - The example docker commands are mostly provided according to Windows and OSx.
+     - LINUX users can skip commands related to `docker-machine`, which are marked as `dmr`.
+  3. Add a host entry to the host machine (`dmr`)
      - `docker-machine start` - will start the docker machine if you are using `windows` or `OSx`.
      - `docker-machine ip` - will display the IP address of the docker machine.
      - Open the `hosts` file of the host machine, and add an entry as `<ip-address> docker.machine`.
-  2. Download WSO2 product binary packages
+  4. Download WSO2 product binary packages
      - WSO2 API Manager 1.10.0 - `wso2am-1.10.0.zip`
      - WSO2 Data Analytics Server 3.0.1 - `wso2das-3.0.1.zip`
-  3. Add these 2 binary packs to the `packs` directory.
+  5. Add these 2 binary packs to the `packs` directory.
   
 **The Microservice (REST API)**
 
