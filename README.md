@@ -1,9 +1,4 @@
-# data-to-api#
-
-**Demonstration Scenario**
-
-![alt text](https://github.com/knightbeat/data-to-api/blob/master/artifacts/data-to-api-scenario.png "Demostration Scenario")
-
+# WSO2 API Manager Feature Demo #
 
 **Environment Setup**
 	
