@@ -42,19 +42,25 @@
      - `docker-compose up -d apim` - will create the API-M container image and boot it up.
      - `docker ps` - lists the running containers information. 
      - Observe the NAME values ( api.apimdemo.com, das.apimdemo.com ) of the containers.
-  2. Open API-M user interfaces (user=admin, password=admin).
+  2. To view API-M server logs, execute the command
+     - `docker exec -it api.apimdemo.com tailf wso2/wso2am-1.10.0/repository/logs/wso2carbon.log`
+  3. To get into the API-M container filesystem, execute the command
+     - `docker exec -it api.apimdemo.com bash`
+  4. Open API-M user interfaces (user=admin, password=admin).
      - API-M Admin Console [https://docker.machine:9443/carbon](https://docker.machine:9443/carbon)
      - API-M Publisher [https://docker.machine:9443/publisher](https://docker.machine:9443/publisher)
      - API-M Store [https://docker.machine:9443/store](https://docker.machine:9443/store)
-  3. Publish the API using the Swagger definition of the Microservice.
+  5. Publish the API using the Swagger definition of the Microservice.
      - Create an API on API-M publisher.
      - Import swagger definition from `apim-feature-demo/mres/swagger.json` of the repository.
      - Provide a proper resource path (i.e. `/uefa`)
      - Go to the next page and add the URL `http://res.apimdemo.com:8080` as the Managed API URL.
      - Select a few throttling tiers and publish the API.
-  4. Subscribe to the API via the API-M Store.
-  5. Try the API with Swagger based API Console on the API-M Store UI.
-  6. Or, use a REST client like [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
+  6. Subscribe to the API via the API-M Store.
+  7. Try the API with Swagger based API Console on the API-M Store UI.
+     - With resource `GET /matches/{tournementID}/results` use the input parameter `EUL2016`.
+     - With resource `GET /matches/{tournementID}/results/{recordId}` use the input parameters `EUL2016` and a number beteen 1 and 8 such as `4`.
+  8. Or, use a REST client like [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
      - `https://docker.machine:8243/uefa/1.0/matches/EUL2016/results`
      - `https://docker.machine:8243/uefa/1.0/matches/EUL2016/results/8`
 

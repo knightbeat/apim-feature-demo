@@ -21,6 +21,8 @@ services:
         MYSQL_ROOT_PASSWORD: root
   apim:
     container_name: api.apimdemo.com
+    depends_on: 
+      - das
     build:
       context: .
       dockerfile: apim/Dockerfile
