@@ -1,0 +1,103 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This REST service provides information related to currently played football matches",
+    "version" : "1.0",
+    "title" : "FootballTournamentsService",
+    "contact" : {
+      "name" : "Chathura Kulasinghe",
+      "url" : "http://wso2.com",
+      "email" : "chathurak@wso2.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "tags" : [ {
+    "name" : "football-tournaments"
+  } ],
+  "paths" : {
+    "/matches/{tournementID}/results" : {
+      "get" : {
+        "tags" : [ "football-tournaments" ],
+        "summary" : "Returns current match results of a particular tournament",
+        "description" : "Returns HTTP 404 if the route is not found",
+        "operationId" : "getRouteById",
+        "produces" : [ "application/json", "text/xml" ],
+        "parameters" : [ {
+          "name" : "tournementID",
+          "in" : "path",
+          "description" : "tournementID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Valid match results set is found"
+          },
+          "404" : {
+            "description" : "Valid match results set is not found"
+          }
+        }
+      }
+    },
+    "/matches/{tournementID}/results/{recordId}" : {
+      "get" : {
+        "tags" : [ "football-tournaments" ],
+        "summary" : "Returns a results record of a current match of a particular tournament",
+        "description" : "Returns HTTP 404 if the route is not found",
+        "operationId" : "getRouteById",
+        "produces" : [ "application/json", "text/xml" ],
+        "parameters" : [ {
+          "name" : "tournementID",
+          "in" : "path",
+          "description" : "tournementID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "recordId",
+          "in" : "path",
+          "description" : "recordId",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Valid travel route option found"
+          },
+          "404" : {
+            "description" : "Travel route option not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "MatchResult" : {
+      "type" : "object",
+      "properties" : {
+        "tournamentID" : {
+          "type" : "string"
+        },
+        "recordID" : {
+          "type" : "string"
+        },
+        "teamA" : {
+          "type" : "string"
+        },
+        "teamB" : {
+          "type" : "string"
+        },
+        "teamAscore" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "teamBScore" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+version: '2'
+services:
+  openldap:
+    container_name: ldap.apimdemo.com
+    build: 
+        context: .
+        dockerfile: openldap/Dockerfile
+    ports:
+     - "389:389"
+    environment:
+      SLAPD_PASSWORD: password
+      SLAPD_DOMAIN: wso2.org
+  dbs:
+    container_name: dbs.apimdemo.com
+    build: 
+        context: .
+        dockerfile: dbs/Dockerfile
+    ports:
+     - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+  apim:
+    container_name: api.apimdemo.com
+    build:
+      context: .
+      dockerfile: apim/Dockerfile
+    ports:
+      - "9763:9763"
+      - "9443:9443"
+      - "8280:8280"
+      - "8243:8243"
+  das:
+    container_name: das.apimdemo.com
+    depends_on: 
+      - dbs
+    build:
+      context: .
+      dockerfile: das/Dockerfile
+    ports:
+      - "9767:9763"
+      - "9447:9443"
+  mres:
+    container_name: res.apimdemo.com
+    build:
+      context: .
+      dockerfile: mres/Dockerfile
+    ports:
+      - "8080:8080"

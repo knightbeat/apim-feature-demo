@@ -1,0 +1,5 @@
+org\example\service\FootballTournamentService.class
+org\example\service\MatchResult.class
+org\example\service\Address.class
+org\example\service\Profile.class
+org\example\service\Application.class
