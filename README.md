@@ -12,6 +12,7 @@
      - `docker-machine start` - will start the docker machine if you are using `windows` or `OSx`.
      - `docker-machine ip` - will display the IP address of the docker machine.
      - Open the `hosts` file of the host machine, and add an entry as `<ip-address> docker.machine`.
+     - You may also need to run `docker-machine env` and `eval "$(docker-machine env default)"` on `OSx` environments.
   4. Download WSO2 product binary packages
      - WSO2 API Manager 1.10.0 - `wso2am-1.10.0.zip`
      - WSO2 Data Analytics Server 3.0.1 - `wso2das-3.0.1.zip`
@@ -54,12 +55,15 @@
      - Create an API on API-M publisher.
      - Import swagger definition from `apim-feature-demo/mres/swagger.json` of the repository.
      - Provide a proper resource path (i.e. `/uefa`)
+     - Use image from `apim-feature-demo/mres/euro-2016.png` as thumbnail.
      - Go to the next page and add the URL `http://res.apimdemo.com:8080` as the Managed API URL.
      - Select a few throttling tiers and publish the API.
   6. Subscribe to the API via the API-M Store.
   7. Try the API with Swagger based API Console on the API-M Store UI.
      - With resource `GET /matches/{tournementID}/results` use the input parameter `EUL2016`.
      - With resource `GET /matches/{tournementID}/results/{recordId}` use the input parameters `EUL2016` and a number beteen 1 and 8 such as `4`.
+     - If you get an error, it may be due to the browser not accepting your certificate. Should that be the case, open 
+       https://docker.machine:8243/uefa/1.0 on a separate tab and accept the certificate to resolve the issue.
   8. Or, use a REST client like [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
      - `https://docker.machine:8243/uefa/1.0/matches/EUL2016/results`
      - `https://docker.machine:8243/uefa/1.0/matches/EUL2016/results/8`
